@@ -30,16 +30,16 @@ query {
     genres
   }
 }
-```
 
 mutation {
-addBook(
-title: "New Book"
-author: "Author Name"
-published: 2022
-genres: ["Genre1", "Genre2"]
-) {
-title
-author
+  addBook(
+    title: "New Book"
+    author: "Author Name"
+    published: 2022
+    genres: ["Genre1", "Genre2"]
+  ) {
+    title
+    author
+  }
 }
-}
+```
