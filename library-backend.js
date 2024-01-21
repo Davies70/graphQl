@@ -44,6 +44,7 @@ const typeDefs = `
       author: String
       genre: String
       ): [Book!]!
+    me: User
   }
 
   type Mutation {
@@ -58,6 +59,16 @@ const typeDefs = `
     name: String!
     setBornTo: Int!
     ): Author
+  }
+
+  type User {
+    username: String!
+    favoriteGenre: String!
+    id: ID!
+  }
+
+  type Token {
+    value: String!
   }
 `
 
@@ -133,23 +144,6 @@ const resolvers = {
     },
   },
 }
-
-// const createData = async (array) => {
-//   for (b of array) {
-//     let author = await Author.findOne({ name: b.author })
-//     let mybook = await Book.findOne({ title: b.title })
-//     if (!author && !mybook) {
-//       let newAuthor = new Author({ name: b.author })
-//       await newAuthor.save()
-//       let newBook = new Book({ ...b, author: newAuthor._id })
-//       await newBook.save()
-//     }
-//     if (!mybook) {
-//       let book = new Book({ ...b, author: author._id })
-//       await book.save()
-//     }
-//   }
-// }
 
 const server = new ApolloServer({
   typeDefs,
